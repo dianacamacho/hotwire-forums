@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root to: 'main#index'
   get 'main/index'
 
-  resources :discussions, only: [:index, :create, :new]
+  resources :discussions
 end
