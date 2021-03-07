@@ -12,3 +12,6 @@ import 'bootstrap/dist/css/bootstrap'
 
 import "controllers"
 import "@hotwired/turbo-rails"
+
+require("trix")
+require("@rails/actiontext")
