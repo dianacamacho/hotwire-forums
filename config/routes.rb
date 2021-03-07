@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   root to: 'main#index'
   get 'main/index'
 
-  resources :discussions
+  resources :discussions do
+    resources :posts, module: :discussions
+  end
 end
