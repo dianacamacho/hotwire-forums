@@ -33,6 +33,15 @@ module Discussions
       end
     end
 
+    def destroy
+      @post.destroy
+
+      respond_to do |format|
+        format.turbo_stream { } # do nothing. let the after_destroy callback delete the post
+        format.html { redirect_to @post.discussion, notice: "Post deleted" }
+      end
+    end
+
     private
 
     def set_discussion
