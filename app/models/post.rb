@@ -5,4 +5,6 @@ class Post < ApplicationRecord
   has_rich_text :body # comes from action text
 
   validates :body, presence: true
+
+  after_create_commit -> { broadcast_append_to discussion, partial: "discussions/posts/post", locals: { post: self } }
 end
