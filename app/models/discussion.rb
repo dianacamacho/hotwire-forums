@@ -3,6 +3,7 @@ class Discussion < ApplicationRecord
   # currently logged in user as the user on create rather than
   # having to pass in that value separately
   belongs_to :user, default: -> { Current.user }
+  belongs_to :category, counter_cache: true, touch: true
 
   validates :name, presence: true
 

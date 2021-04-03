@@ -18,6 +18,11 @@
   </div>
 
   <div class="mb-3">
+    <%= f.label :category_id, "Choose a category", class: "form-label" %>
+    <%= f.collection_select :category_id, Category.sorted, :id, :name, { include_blank: "Pick a category..." }, { autofucs: :false, class: "form-control" } %>
+  </div>
+
+  <div class="mb-3">
     <%= f.label :pinned, class: "form-label" %>
     <%= f.check_box :pinned %>
   </div>
