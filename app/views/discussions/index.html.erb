@@ -1,4 +1,9 @@
-<%= turbo_stream_from "discussions" %>
+<% if @category.present? %>
+  <!-- need to have separate turbo stream from category so any new discussions not belonging to the category dont pop up here if only had the discussions stream active. scoping it to category makes sure only discussions associated to the category show up -->
+  <%= turbo_stream_from @category %>
+<% else %>
+  <%= turbo_stream_from "discussions" %>
+<% end %>
 
 <div class="d-flex justify-content-between align-items-center">
   <h1>Discussions</h1>
@@ -15,8 +20,11 @@
   </div>
 
   <div class="col">
+    <% if @category %>
+      <h4>Viewing discussions in <%= @category.name %></h4>
+    <% end %>
     <div id="discussions">
-      <%= render @discussions %>
+      <%= render partial: "discussions/discussion", collection: @discussions %>
     </div>
   </div>
 </div>
